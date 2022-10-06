@@ -1,4 +1,4 @@
 import pytest
 
-test_dummy():
+def test_dummy():
     assert True
