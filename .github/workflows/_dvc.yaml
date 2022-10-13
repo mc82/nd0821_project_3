@@ -9,8 +9,8 @@ jobs:
     - uses: actions/checkout@v2
     - uses: iterative/setup-dvc@v1
     - name: install dependencies
-        run: |
-            pip install dvc_s3
+      run: |
+        pip install dvc_s3
     - name: dvc commit
       run: |
         dvc push s3 --remote s3
