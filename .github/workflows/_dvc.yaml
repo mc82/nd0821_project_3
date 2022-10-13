@@ -15,4 +15,4 @@ jobs:
         pip install dvc_s3 attrs==21.3.0
     - name: dvc commit
       run: |
-        dvc push s3 --remote s3
+        dvc push --remote s3
