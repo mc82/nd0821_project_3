@@ -11,6 +11,7 @@ jobs:
     - name: install dependencies
       run: |
         pip install --upgrade pip 
+        pip install --upgrade pyopenssl
         pip install dvc_s3 attrs==21.3.0
     - name: dvc commit
       run: |
