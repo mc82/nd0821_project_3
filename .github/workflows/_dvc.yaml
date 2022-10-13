@@ -10,7 +10,7 @@ jobs:
     - uses: iterative/setup-dvc@v1
     - name: install dependencies
       run: |
-        pip install dvc_s3 attrs=21.3.0
+        pip install dvc_s3 attrs==21.3.0
     - name: dvc commit
       run: |
         dvc push s3 --remote s3
