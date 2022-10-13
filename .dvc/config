@@ -2,3 +2,5 @@
     remote = localremote
 ['remote "localremote"']
     url = ../dvc_local_remote
+['remote "s3"']
+    url = s3://mc82nd0821project3
