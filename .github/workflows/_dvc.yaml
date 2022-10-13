@@ -10,6 +10,7 @@ jobs:
     - uses: iterative/setup-dvc@v1
     - name: install dependencies
       run: |
+        pip install --upgrade pip 
         pip install dvc_s3 attrs==21.3.0
     - name: dvc commit
       run: |
