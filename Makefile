@@ -8,5 +8,14 @@ setup-evnironment:
 	pip install -r requirements.txt;
 
 
-create-bucket:
- 	aws s3api create-bucket --bucket ${BUCKET_NAME} --region us-east-1 --profile ${AWS_PROFILE} 
+# create-bucket:
+#  	aws s3api create-bucket --bucket ${BUCKET_NAME} --region us-east-1 --profile ${AWS_PROFILE} 
+
+remove-spaces:
+	sed  "s/\ //g" > data/census_clean.csv  
+	
+train-model:
+	python3 -m src.python.train_model
+
+run-tests:
+	python3 -m pytest
