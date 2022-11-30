@@ -1,7 +1,5 @@
 import pytest
 import numpy as np
-import pandas as pd
-import mimesis
 from python.ml.model import train_model
 
 TEST_SET_SIZE = 100
