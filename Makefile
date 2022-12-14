@@ -18,4 +18,8 @@ train-model:
 	python3 -m src.python.train_model
 
 run-tests:
-	python3 -m pytest
+	python3 -m pytest -vv
+
+
+run-app:
+	python3 -m python.ml.main

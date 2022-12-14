@@ -11,7 +11,7 @@ def pickle_object(object, path):
         pickle.dump(object, f)
 
 
-def unpickle_object(model, path):
-    with open(path, "wb") as f:
+def unpickle_object(path):
+    with open(path, "rb") as f:
         object = pickle.load(f)
     return object
