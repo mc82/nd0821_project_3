@@ -1,11 +1,14 @@
 import numpy as np
+import pandas
 from sklearn.preprocessing import LabelBinarizer, OneHotEncoder
+
+from python.config import CAT_FEATURES
 
 
 def process_data(
     X, categorical_features=[], label=None, training=True, encoder=None, lb=None
 ):
-    """ Process the data used in the machine learning pipeline.
+    """Process the data used in the machine learning pipeline.
 
     Processes the data using one hot encoding for the categorical features and a
     label binarizer for the labels. This can be used in either training or
@@ -68,3 +71,23 @@ def process_data(
 
     X = np.concatenate([X_continuous, X_categorical], axis=1)
     return X, y, encoder, lb
+
+
+def process_training_data(data):
+
+    X, y, encoder, label_binarizer = process_data(
+        data, categorical_features=CAT_FEATURES, label="salary", training=True
+    )
+    return X, y, encoder, label_binarizer
+
+
+def process_prediction_data(data: pandas.DataFrame, encoder, label_binarizer):
+    X, y, _, _ = process_data(
+        data,
+        categorical_features=CAT_FEATURES,
+        label="salary",
+        training=False,
+        encoder=encoder,
+        lb=label_binarizer,
+    )
+    return X, y

@@ -1,10 +1,9 @@
 from __future__ import annotations
-from typing import List
+from typing import Tuple, List
 import pandas
 
 
 class Slice(object):
-    
     def __init__(self, df: pandas.DataFrame, column_name: str, column_value) -> None:
         self._df = df
         self._column_name = column_name
@@ -14,7 +13,7 @@ class Slice(object):
     @property
     def column_name(self):
         return self._column_name
-    
+
     @property
     def column_value(self):
         return self._column_value
@@ -63,11 +62,15 @@ class Slicer(object):
                 self._slices.append(slice.fit())
         return self
 
-    def transform(self, dfs: List[pandas.DataFrame]) -> List[(pandas.DateOffset, str, str)]:
+    def transform(
+        self, dfs: List[pandas.DataFrame]
+    ) -> List[Tuple[(pandas.DateOffset, str, str)]]:
         sliced_dfs = []
         for df in dfs:
             for slice in self.slices:
-                sliced_dfs.append((slice.transform(df), slice.column_name, slice.column_value))
+                sliced_dfs.append(
+                    (slice.transform(df), slice.column_name, slice.column_value)
+                )
         return sliced_dfs
 
     def _get_unique_values_of_column(self, column_name: str):

@@ -20,6 +20,5 @@ train-model:
 run-tests:
 	python3 -m pytest -vv
 
-
 run-app:
-	python3 -m python.ml.main
+	python3 -m python.run_app

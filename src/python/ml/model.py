@@ -1,13 +1,16 @@
 from sklearn.metrics import fbeta_score, precision_score, recall_score
 from sklearn.linear_model import LogisticRegression
 import numpy as np
+from numpy.typing import NDArray
 from typing import Tuple
 
 from python.ml.helper import pickle_object, unpickle_object
 
 
 # Optional: implement hyperparameter tuning.
-def train_model(X_train: np.array, y_train: np.array) -> LogisticRegression:
+def train_model(
+    X_train: np.typing.NDArray, y_train: np.typing.NDArray
+) -> LogisticRegression:
     """
     Trains a machine learning model and returns it.
 
@@ -29,7 +32,7 @@ def train_model(X_train: np.array, y_train: np.array) -> LogisticRegression:
 
 
 def compute_model_metrics(
-    y: np.array, preds: np.array
+    y: NDArray, preds: NDArray
 ) -> Tuple[np.float64, np.float64, np.float64]:
     """
     Validates the trained machine learning model using precision, recall, and F1.
