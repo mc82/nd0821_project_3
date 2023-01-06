@@ -1,0 +1,1 @@
+web: uvicorn src.python.api.app:app
