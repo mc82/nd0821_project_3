@@ -7,7 +7,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:      
-      PYTHONPATH: ./src/python:./test:./  
+      PYTHONPATH: ./src:./test:./  
     steps:
     - uses: actions/checkout@v2
 
