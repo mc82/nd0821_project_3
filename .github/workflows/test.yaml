@@ -23,4 +23,4 @@ jobs:
         
     - name: Running tests with pytest
       run: |
-        python3.8 -m pytest -m github_actions
+        python3.8 -vv -m pytest -m github_actions
