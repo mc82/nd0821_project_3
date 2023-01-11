@@ -1,0 +1,1 @@
+web: uvicorn src.python.api.app:app --host 0.0.0.0 --port $PORT  --h11-max-incomplete-event-size 39999

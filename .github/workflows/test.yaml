@@ -7,7 +7,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:      
-      PYTHONPATH: ./src/python:./test:./  
+      PYTHONPATH: ./src:./test:./  
     steps:
     - uses: actions/checkout@v2
 
@@ -19,8 +19,8 @@ jobs:
     - name: Install dependencies
       run: |
         python3.8 -m pip install --upgrade pip
-        python3.8 -m pip install -r requirements.txt
+        PYTHONPATH= python3.8 -m pip install -r requirements.txt
         
     - name: Running tests with pytest
       run: |
-        python3.8 -m pytest -m github_actions
+        python3.8 -m pytest -vv

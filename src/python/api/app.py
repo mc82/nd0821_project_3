@@ -1,6 +1,6 @@
 # Put the code for your API here.
 from fastapi import FastAPI
-
+import json
 
 from python.ml.model import load_model, inference
 from python.ml.data import process_prediction_data
@@ -10,12 +10,12 @@ from .schema import PersonalAttributes, SalaryCategory
 from .processor import preprocess_personal_attributes, post_process_prediction
 
 
-app = FastAPI()
+app = FastAPI(debug=True)
 
 
 @app.get("/")
 async def say_hello():
-    return {"Greeting": "Moin Moin!"}
+    return json.dumps({"Greeting": "Moin Moin!"})
 
 
 @app.post("/income/", response_model=SalaryCategory)
