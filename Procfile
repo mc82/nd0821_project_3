@@ -1,1 +1,1 @@
-web: uvicorn src.python.api.app:app 0.0.0.0:8080
+web: uvicorn src.python.api.app:app --host 0.0.0.0 --port 8080    
