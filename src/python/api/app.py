@@ -10,7 +10,7 @@ from .schema import PersonalAttributes, SalaryCategory
 from .processor import preprocess_personal_attributes, post_process_prediction
 
 
-app = FastAPI()
+app = FastAPI(debug=True)
 
 
 @app.get("/")
