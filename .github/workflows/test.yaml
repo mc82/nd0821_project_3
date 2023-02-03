@@ -10,17 +10,23 @@ jobs:
       PYTHONPATH: ./src:./test:./  
     steps:
     - uses: actions/checkout@v2
-
+    - uses: iterative/setup-dvc@v1
     - name: Set up Python 3.8
       uses: actions/setup-python@v1
       with:
         python-version: 3.8
-
     - name: Install dependencies
       run: |
         python3.8 -m pip install --upgrade pip
-        PYTHONPATH= python3.8 -m pip install -r requirements.txt
-        
+        PYTHONPATH= python3.8 -m pip install -r requirements.txt        
+    - name: dvc pull
+      run: |
+        dvc pull --remote s3
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     - name: Running tests with pytest
       run: |
         python3.8 -m pytest -vv
+
+

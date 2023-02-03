@@ -10,6 +10,15 @@ from .schema import PersonalAttributes, SalaryCategory
 from .processor import preprocess_personal_attributes, post_process_prediction
 
 
+import os
+
+if "DYNO" in os.environ and os.path.isdir(".dvc"):
+    os.system("dvc config core.no_scm true")
+    if os.system("dvc pull --remote s3") != 0:
+        exit("dvc pull failed")
+    os.system("rm -r .dvc .apt/usr/lib/dvc")
+
+
 app = FastAPI(debug=True)
 
 
