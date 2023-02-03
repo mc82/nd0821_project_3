@@ -45,6 +45,8 @@ Performance on sex Female: precision: 0.5403225806451613, recall: 0.258687258687
 
 ## Ethical Considerations
 
+The model may show that the income depends on gender / race etc. and shouldn't be used for future income agreements.
+
 ## Caveats and Recommendations
 
 The model was trained only to demonstrate skill during an assignment. Only limited tests were applied.

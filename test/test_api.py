@@ -12,6 +12,11 @@ def test_root_status_code_200():
     assert r.status_code == 200
 
 
+def test_root_greeting_message():
+    r = client.get("/")
+    assert r.json() == '{"Greeting": "Moin Moin!"}'
+
+
 def test_income_classification_lte_50k():
     post_data = json.dumps(
         {

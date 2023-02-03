@@ -20,6 +20,7 @@ post_data = {
     "native-country": "United-States",
 }
 
-x = requests.post(url, json=post_data)
+result = requests.post(url, json=post_data)
 
-print(x.text)
+print(f"Result of request: status code {result.status_code}")
+print(f"Result of request: message {result.text}")

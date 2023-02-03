@@ -12,3 +12,7 @@ CAT_FEATURES = [
     "sex",
     "native-country",
 ]
+MODEL_METRICS_PATH = "slice_output.txt"
+PERFORMANCE_TEMPLATE = (
+    "Performance on {slice}: precision: {precision}, recall: {recall}, fbeta: {fbeta}"
+)

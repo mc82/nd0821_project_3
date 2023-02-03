@@ -1,6 +1,7 @@
 # Put the code for your API here.
 from fastapi import FastAPI
 import json
+import os
 
 from python.ml.model import load_model, inference
 from python.ml.data import process_prediction_data
@@ -9,8 +10,6 @@ from python.config import MODEL_PATH, BINARIZER_PATH, ENCODER_PATH
 from .schema import PersonalAttributes, SalaryCategory
 from .processor import preprocess_personal_attributes, post_process_prediction
 
-
-import os
 
 if "DYNO" in os.environ and os.path.isdir(".dvc"):
     os.system("dvc config core.no_scm true")

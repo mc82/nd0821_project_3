@@ -9,6 +9,8 @@ from .config import (
     ENCODER_PATH,
     BINARIZER_PATH,
     CAT_FEATURES,
+    MODEL_METRICS_PATH,
+    PERFORMANCE_TEMPLATE,
 )
 from python.ml.data import process_prediction_data, process_training_data
 from python.ml.model import train_model, inference, compute_model_metrics, save_model
@@ -18,13 +20,13 @@ from python.ml.slicer import Slicer
 data = load_data(DATA_INPUT_PATH)
 
 
+def log_performance(message: str):
+    with open(MODEL_METRICS_PATH, "a") as f:
+        f.write(f"{message}\n")
+
+
 def show_performance(slice: str, precision: float, recall: float, fbeta: float):
-    PERFORMANCE_TEMPLATE = "Performance on {slice}: precision: {precision}, recall: {recall}, fbeta: {fbeta}"
-    print(
-        PERFORMANCE_TEMPLATE.format(
-            slice=slice, precision=precision, recall=recall, fbeta=fbeta
-        )
-    )
+    print
 
 
 if __name__ == "__main__":
@@ -62,9 +64,12 @@ if __name__ == "__main__":
 
         precision, recall, fbeta = compute_model_metrics(preds=predictions, y=y_test)
 
-        show_performance(
+        performance_message = PERFORMANCE_TEMPLATE.format(
             slice=slice[1] + " " + slice[2],
             precision=precision,
             recall=recall,
             fbeta=fbeta,
         )
+
+        print(performance_message)
+        log_performance(performance_message)

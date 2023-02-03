@@ -1,6 +1,7 @@
 AWS_PROFILE := mc82nd0821project3
 
 BUCKET_NAME := 	mc82nd0821project3
+LOCAL_PORT := 8888
 
 setup-evnironment:
 	python3 -m virtualenv env
@@ -14,11 +15,14 @@ setup-evnironment:
 remove-spaces:
 	sed  "s/\ //g" > data/census_clean.csv  
 	
-train-model:
-	python3 -m src.python.train_model
+run-main:
+	python3 -m src.python.main
 
 run-tests:
 	python3 -m pytest -vv
 
-run-app:
-	python3 -m python.run_app
+run-app-locally:
+	uvicorn src.python.api.app:app --host 0.0.0.0 --port ${LOCAL_PORT}  --h11-max-incomplete-event-size 39999 
+
+live-request:
+	python3 -m src.python.api.make_live_api_request
